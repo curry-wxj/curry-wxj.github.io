@@ -1,0 +1,416 @@
+
+.screen-area { /*初始化 .icon也会继承*/   /*初始化是为了不让那个动画先删除在现实*/
+    opacity: 0;
+}
+/*公共部分*/
+@keyframes fadeInUp {
+    0%{
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.current .screen-area {    /*设置动画前面都要加.current 因为在滑动一次 就要刷新一次动画*/
+    animation: fadeInUp 1s ease  forwards;
+}
+.current .sec1-info {
+    animation: fadeInUp 1s ease 0.5s both;
+}
+.current .sec1-vip {
+    animation: fadeInUp 1s ease 0.5s both;
+}
+
+/*左边的小图标旋转*/
+@keyframes rollToRight {
+    0%{
+        transform: translateX(-100px) rotate(-100deg);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px) rotate(0deg);
+        opacity: 1;
+    }
+}
+.current .icon{
+    animation: rollToRight 1s ease  forwards;
+}
+
+/*第一屏*/
+.sec1 {  /*.sec1-title因为对话是3D的所要设置这个*/
+    perspective:1000px;
+}
+.sec1-info {
+    opacity: 0;
+}
+.sec1-vip {
+    opacity: 0;
+}
+.sec1-title{
+    opacity: 0;
+}
+.sec1 .figure-1:after {
+    transform: scale(0);
+}
+/*动画*/
+@keyframes firstIn{ /*不做大多数这几个字的动画*/
+    0%{
+        opacity: 0;
+        transform: translateZ(800px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateZ(0px));
+    }
+}
+.current .sec1-title{
+     animation: firstIn 1s ease forwards;
+}
+@keyframes flash{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.figure-1:after {
+    animation:flash 1s ease infinite;
+}
+
+/**第二屏**/
+
+.figure-list a.icon-2 {
+    transform:scale(1.3);
+}
+.figure-list a.icon-4 {
+    transform:scale(0.8);
+}
+.figure-list a.icon-5 {
+    transform:scale(0.6);
+}
+.figure-list a.icon-6 {
+    transform:scale(0.4);
+}
+.figure-list a.icon-7 {
+    transform:scale(0.5);
+}
+.figure-list a.icon-8 {
+    transform:scale(0.6);
+}
+.figure-list a.icon-9 {
+     transform:scale(0.7);
+ }
+
+/*动画*/
+/*围绕着人的小图标*/
+@keyframes icon1 { /*之前的z-index为1 因为在人物的后面，人物的z-index为5*/
+    0% {  z-index: 5;  transform: translate(0,0);  }
+    25%{  z-index: 5;  transform: translate(230px,0)        scale(1.3);  }
+    50%{  z-index: 5;  transform: translate(400px,-95px)    scale(1);    }
+    75%{  z-index: 1;  transform: translate(320px,-230px)   scale(0.8);  }
+    100%{ z-index: 1;  transform: translate(151px,-289px)   scale(0.6);  }
+}
+@keyframes icon2 { /*之前的z-index为1 因为在人物的后面，人物的z-index为5*/
+    0% {  z-index: 5;  transform: translate(0,0)            scale(1.3);  }
+    25%{  z-index: 5;  transform: translate(190px,-95)      scale(1);    }
+    50%{  z-index: 5;  transform: translate(140px,-230px)   scale(0.8);  }
+    75%{  z-index: 1;  transform: translate(-29px,-310px)   scale(0.6);  }
+    100%{ z-index: 1;  transform: translate(-240px,-282px)  scale(0.4);  }
+}
+@keyframes icon3 {
+    0% {  transform: translate(0,0); }
+    25%{  transform: translate(-80px,-135px)                scale(0.8);  }
+    50%{  z-index: 1;  transform: translate(-250px,-194px)  scale(0.6);  }
+    75%{  z-index: 1;  transform: translate(-410px,-187px)  scale(0.4);  }
+    100%{ z-index: 5;  transform: translate(-570px,-150px)  scale(0.5);  }
+}
+@keyframes icon4 {
+    0% {  transform: translate(0,0)                         scale(0.8)   }
+    25%{  transform: translate(-168px,-59px)                scale(0.6);  }
+    50%{  z-index: 1;  transform: translate(-330px,-52px)   scale(0.4);  }
+    75%{  z-index: 1;  transform: translate(-490px,-15px)   scale(0.5);  }
+    100%{ z-index: 5;  transform: translate(-590px,85px)    scale(0.6);  }
+}
+@keyframes icon5 {
+    0% {  transform: translate(0,0)                         scale(0.6)   }
+    25%{  z-index: 1;  transform: translate(-160px,7px)     scale(0.4);  }
+    50%{  z-index: 5;  transform: translate(-320px,44px)    scale(0.5);  }
+    75%{  z-index: 5;  transform: translate(-420px,144px)   scale(0.6);  }
+    100%{ z-index: 5;  transform: translate(-340px,239px)   scale(0.7);  }
+}
+@keyframes icon6 {
+    0% {  transform: translate(0,0)                         scale(0.4)   }
+    25%{  z-index: 1;  transform: translate(-160px,37px)    scale(0.5);  }
+    50%{  z-index: 5;  transform: translate(-260px,137px)   scale(0.6);  }
+    75%{  z-index: 5;  transform: translate(-180px,232px)   scale(0.7);  }
+    100%{ z-index: 5;  transform: translate(10px,282px); }
+}
+@keyframes icon7 {
+    0% {  transform: translate(0,0)                         scale(0.5);  }
+    25%{  transform: translate(-100px,100px)                scale(0.6);  }
+    50%{  transform: translate(-20px,195px)                 scale(0.7);  }
+    75%{  transform: translate(170px,245px)                 scale(1);    }
+    100%{ transform: translate(400px,245px)                 scale(1.3);  }
+}
+@keyframes icon8 {
+    0% {  transform: translate(0,0)                         scale(0.6);  }
+    25%{  transform: translate(80px,96px)                   scale(0.7);  }
+    50%{  transform: translate(270px,145px)                 scale(1);    }
+    75%{  transform: translate(500px,145px)                 scale(1.3);  }
+    100%{ transform: translate(670px,51px);   }
+}
+@keyframes icon9 {
+    0% {  z-index: 5;  transform: translate(0,0)            scale(0.7);  }
+    25%{  z-index: 5;  transform: translate(198px,58px)     scale(1);    }
+    50%{  z-index: 5;  transform: translate(420px,50px)     scale(1.3);  }
+    75%{  z-index: 5;  transform: translate(590px,-45px)    scale(1);    }
+    100%{ z-index: 1;  transform: translate(510px,-180px)   scale(0.8);  }
+}
+.figure-list .icon-1{  /*如果不是infinite 就要改成.current .figure-list .icon-1*/
+    animation: icon1 1s linear infinite;
+}
+.figure-list .icon-2{
+    animation: icon2 1s linear infinite;
+}
+.figure-list .icon-3{
+    animation: icon3 1s linear infinite;
+}
+.figure-list .icon-4{
+    animation: icon4 1s linear infinite;
+}
+.figure-list .icon-5{
+    animation: icon5 1s linear infinite;
+}
+.figure-list .icon-6{
+    animation: icon6 1s linear infinite;
+}
+.figure-list .icon-7{
+     animation: icon7 1s linear infinite;
+}
+.figure-list .icon-8{
+    animation: icon8 1s linear infinite;
+}
+.figure-list .icon-9{
+    animation: icon9 1s linear infinite;
+}
+
+/**第三屏**/
+.sec3{
+    perspective:1000px; /*让小车有3D效果*/
+}
+.figure1-list span {
+    transform-origin:center center;
+}
+.figure1-list .sec3-icon {
+     opacity:0;
+ }
+.figure1-list .sec3-icon1 {
+    opacity:0;
+}
+.sec3 .light {
+    opacity:0
+}
+/*动画：*/
+@keyframes com-animation{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+/*电脑，电脑屏幕的光线，汽车后面的火团*/
+.current .icon-monitor,.icon-shine,.icon-flame{
+    animation: com-animation 1s linear both;
+}
+/*很多的三角图案*/
+.current .light{
+    animation: com-animation 1s 0.5s linear both;
+}
+/*汽车*/
+@keyframes car-animation{
+    0%{
+        opacity: 0;
+        transform:translateZ(-50px);
+    }
+    100%{
+        opacity: 1;
+        transform:translateZ(0px);
+    }
+}
+.current .figure1-list .icon-car{
+    animation: car-animation 1s ease both;
+}
+
+/*游戏人物*/
+@keyframes icon-animation{
+     0%{
+         opacity: 0;
+         transform:translateY(0px);
+     }
+     100%{
+         opacity: 1;
+         transform:translateY(-20px);
+     }
+ }
+@keyframes icon5-animation{
+    0%{
+        opacity: 0;
+        transform:translateX(-20px);
+    }
+    100%{
+        opacity: 1;
+        transform:translateX(10px);
+    }
+}
+.current .icon-character1{
+    animation: icon-animation 1s 0.5s linear both;
+}
+.current .icon-character2{
+    animation: icon-animation 1s 0.3s linear both;
+}
+.current .icon-character3{
+    animation: icon-animation 1s 0.3s linear both;
+}
+.current .icon-character4{
+    animation: icon-animation 1s 0.5s linear both;
+}
+.current .icon-character5{
+    animation: icon5-animation 1s 0.3s linear both;
+}
+
+/**第四屏**/
+.figure2-list { /* 初始化 */
+    transform:rotate(-10deg) scale(0);
+}
+/*动画*/
+@keyframes list-animation{
+     0%{
+         transform:rotate(-10deg) scale(0.9);
+
+     }
+     100%{
+         transform:rotate(0deg) scale(1);
+     }
+}
+.current .figure2-list {
+    animation: list-animation 1s linear both;
+}
+@keyframes list-child-animation{
+    0%{
+       transform: translate(0px,0px);
+    }
+    25%{
+        transform: translate(0px,1px);
+    }
+    50%{
+        transform: translate(1px,0px);
+    }
+    100%{
+        transform: translate(0px,0px);
+    }
+}
+
+.sec4 .figure2-list span{
+    animation: list-child-animation 1s linear infinite alternate;
+}
+
+/**第五屏**/
+.figure3-list span {
+    opacity:0;
+}
+/*动画*/
+@keyframes bird-animation{
+    0%{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0px);
+    }
+}
+.current .figure3-list .icon-bird{
+    animation:bird-animation 1s linear both;
+}
+@keyframes dialog2-animation{
+    0%{
+        opacity:0;
+    }
+    33%{
+        opacity:1;
+        transform:scale(1.05);
+    }
+    66%{
+        opacity:1;
+        transform:scale(0.95);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+.current .icon-dialog2{
+    animation:dialog2-animation 1s linear alternate both;
+}
+
+@keyframes dialog1-animation{
+    0%{
+        opacity:0;
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.05);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+.current .icon-dialog1{
+    animation:dialog1-animation 0.5s linear  both;
+}
+
+@keyframes bear-animation{
+    0%{
+        opacity:1;
+        transform:translateX(0px);
+    }
+    50%{
+        transform:translateX(10px);
+        opacity:1;
+    }
+    100%{
+        opacity:1;
+        transform:translateX(0px);
+    }
+}
+
+.current .icon-bear,.icon-babyq{
+    animation:bear-animation 0.5s linear alternate both;
+}
+
+@keyframes qana-animation{
+    0%{
+        opacity:1;
+        transform:translateX(0px);
+    }
+    33%{
+        opacity:1;
+        transform:translateX(10px);
+    }
+    66%{
+        opacity:1;
+        transform:translateX(-10px);
+    }
+    100%{
+        opacity:1;
+        transform:translateX(0px);
+    }
+}
+.current .icon-qana{
+    animation:qana-animation 1s linear alternate both;
+}
